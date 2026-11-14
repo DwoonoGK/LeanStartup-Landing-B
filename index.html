@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>쓰던 영농일지, 옮겨드리고 다시 돌려드려요 · 영농일지 옮김 (시범)</title>
+  <meta name="description" content="쓰시던 영농일지를 저희가 옮겨드리고, 옮긴 기록은 필요할 때 다시 돌려드려요. 개발 중인 시범 서비스입니다. 연락처만 남겨 주세요.">
+  <meta name="theme-color" content="#faf8f2">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="쓰던 영농일지, 옮겨드리고 다시 돌려드려요">
+  <meta property="og:description" content="개발 중인 시범 서비스예요. 연락처만 남겨 주시면 저희가 먼저 연락드립니다.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23166534'/%3E%3Cpath d='M16 24v-8m0 0c0-3 2-5 5-5h2v2c0 3-2 5-5 5h-2zm0 0c0-2.500-1.800-4.500-4.500-4.500H9.500v1.500c0 2.800 1.900 5 4.700 5H16z' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+  <script src="config.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+
+  <!-- 데모 모드 안내 (config.js 의 endpoint 가 비어 있을 때만 보임) -->
+  <div class="demo-ribbon" id="demo-ribbon" hidden>
+    <i data-lucide="triangle-alert"></i>
+    <span><strong>데모 모드</strong> · 폼 연결 주소가 비어 있어서 문의가 어디에도 전송되지 않아요. README의 “폼 연결”을 먼저 끝내 주세요.</span>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container site-header__inner">
+      <a class="brand" href="#top" aria-label="영농일지 옮김 처음으로">
+        <span class="brand__mark" aria-hidden="true"><i data-lucide="sprout"></i></span>
+        <span class="brand__name">영농일지 옮김</span>
+        <span class="badge badge--soft brand__badge">시범 서비스</span>
+      </a>
+      <a class="btn btn--primary btn--sm" href="#apply" data-cta="header">
+        문의 남기기 <i data-lucide="arrow-right"></i>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ───────── HERO ───────── -->
+    <section class="hero">
+      <div class="hero__glow hero__glow--a" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--b" aria-hidden="true"></div>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow reveal"><i data-lucide="hammer"></i> 개발 중인 시범 서비스예요</p>
+
+          <h1 class="hero__title reveal">
+            쓰던 영농일지,<br>
+            저희가 <em>옮겨드리고</em><br>
+            필요할 때 <em>다시 돌려드려요</em>
+          </h1>
+
+          <p class="hero__lead reveal">
+            종이 일지든, 엑셀이든, 쓰시는 앱이든 괜찮아요.
+            연락처만 남겨 주시면 저희가 먼저 연락드려서, 어떻게 옮길지 천천히 말씀드릴게요.
+          </p>
+
+          <div class="hero__actions reveal">
+            <a class="btn btn--primary btn--lg" href="#apply" id="hero-cta" data-cta="hero">
+              문의 남기기 <i data-lucide="arrow-right"></i>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="#how" data-cta="hero-how">어떻게 하나요?</a>
+          </div>
+
+          <ul class="hero__points reveal">
+            <li><i data-lucide="list-checks"></i> 적을 건 두 가지뿐</li>
+            <li><i data-lucide="camera-off"></i> 사진은 받지 않아요</li>
+            <li><i data-lucide="phone-call"></i> 저희가 먼저 연락드려요</li>
+          </ul>
+        </div>
+
+        <!-- 이해를 돕는 예시 그림 -->
+        <figure class="hero__visual reveal">
+          <div class="flow" aria-hidden="true">
+            <article class="note note--paper">
+              <header class="note__head">
+                <span class="note__icon"><i data-lucide="notebook-pen"></i></span>
+                <div>
+                  <strong>쓰시던 일지</strong>
+                  <span>종이 · 엑셀 · 앱</span>
+                </div>
+              </header>
+              <ul class="paper-lines">
+                <li>6/12 맑음 · 고추밭 방제</li>
+                <li>약제 2통, 오전 7시</li>
+                <li>내일 비 예보 — 물주기 쉼</li>
+              </ul>
+            </article>
+
+            <div class="flow__mid">
+              <span class="flow__tag flow__tag--go"><i data-lucide="arrow-right"></i><b>옮겨드려요</b></span>
+              <span class="flow__tag flow__tag--back"><i data-lucide="arrow-left"></i><b>돌려드려요</b></span>
+            </div>
+
+            <article class="note note--digital">
+              <header class="note__head">
+                <span class="note__icon note__icon--green"><i data-lucide="sprout"></i></span>
+                <div>
+                  <strong>옮겨 둔 기록</strong>
+                  <span>필요할 때 다시 받기</span>
+                </div>
+              </header>
+              <ul class="rows">
+                <li><span class="rows__date">6/12</span><span class="rows__what">고추밭 방제</span><span class="rows__tag">약제 2통</span></li>
+                <li><span class="rows__date">6/11</span><span class="rows__what">관수 · 3구역</span><span class="rows__tag rows__tag--amber">물주기</span></li>
+                <li><span class="rows__date">6/10</span><span class="rows__what">웃거름 주기</span><span class="rows__tag">비료</span></li>
+              </ul>
+            </article>
+          </div>
+          <figcaption class="hero__caption">
+            <i data-lucide="info"></i> 진행 방식을 이해하시도록 그린 예시예요. 실제 화면이 아니에요.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ───────── 솔직하게 ───────── -->
+    <section class="section" id="honest">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">먼저, 솔직하게</p>
+          <h2>지금 할 수 있는 것과 없는 것을<br>먼저 말씀드릴게요</h2>
+          <p class="section__sub">아직 만들고 있는 중이라서, 있는 것처럼 말씀드리지 않을게요.</p>
+        </header>
+
+        <div class="cards cards--3">
+          <article class="card card--amber reveal">
+            <span class="card__icon card__icon--amber"><i data-lucide="hammer"></i></span>
+            <h3>개발 중인 시범 서비스예요</h3>
+            <p>완성된 앱이나 자동으로 옮겨주는 기능은 아직 없어요. 문의해 주신 분과 이야기하면서 함께 만들어 가고 있어요.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><i data-lucide="users"></i></span>
+            <h3>처음엔 사람이 직접 연락드려요</h3>
+            <p>문의가 오면 저희 팀이 전화나 카카오톡으로 직접 연락해서, 쓰시던 일지가 어떤 모양인지 먼저 여쭤볼게요.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><i data-lucide="camera-off"></i></span>
+            <h3>일지 사진은 지금 안 받아요</h3>
+            <p>이 페이지에서는 사진을 올리지 않아요. 이야기를 나눈 뒤에, 보내주실 수 있을 때만 여쭤볼게요.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── 진행 방식 ───────── -->
+    <section class="section section--tint" id="how">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">진행 방식</p>
+          <h2>이렇게 진행돼요</h2>
+          <p class="section__sub">어려운 건 저희가 할게요. 농가에서는 말씀만 해 주시면 돼요.</p>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">1</span>
+            <span class="step__icon"><i data-lucide="message-square-text"></i></span>
+            <h3>문의 남기기</h3>
+            <p>연락처와, 지금 일지를 어떻게 쓰시는지 두 가지만 적어 주세요.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">2</span>
+            <span class="step__icon"><i data-lucide="phone-call"></i></span>
+            <h3>저희가 먼저 연락드려요</h3>
+            <p>쓰시던 일지가 어떤 모양인지 듣고, 어떻게 옮길지 함께 정해요.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">3</span>
+            <span class="step__icon"><i data-lucide="repeat-2"></i></span>
+            <h3>옮기고, 다시 돌려드려요</h3>
+            <p>옮긴 기록은 필요하실 때 다시 받아보실 수 있게 하는 것, 그게 저희가 지키려는 약속이에요.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ───────── 개인정보 ───────── -->
+    <section class="section section--night" id="trust">
+      <div class="container trust">
+        <header class="section__head section__head--left reveal">
+          <p class="kicker kicker--amber">개인정보</p>
+          <h2>받는 정보는<br>딱 두 가지뿐이에요</h2>
+          <p class="section__sub">연락드리는 데 꼭 필요한 것만 여쭤요.</p>
+        </header>
+
+        <div class="trust__body">
+          <div class="trust__cards">
+            <article class="mini reveal">
+              <span class="mini__icon"><i data-lucide="phone"></i></span>
+              <div>
+                <h3>연락처</h3>
+                <p>전화번호 또는 카카오톡 ID. 연락드리는 데만 써요.</p>
+              </div>
+            </article>
+            <article class="mini reveal">
+              <span class="mini__icon"><i data-lucide="notebook-pen"></i></span>
+              <div>
+                <h3>일지 쓰는 방식</h3>
+                <p>종이, 엑셀, 앱, 안 씀 중 하나. 일지를 쓰시는 분께 연락드리려고 여쭤요.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="trust__not reveal">
+            <p class="trust__not-title"><i data-lucide="shield-check"></i> 이 페이지에서는 받지 않아요</p>
+            <ul>
+              <li><i data-lucide="x"></i>일지 사진</li>
+              <li><i data-lucide="x"></i>집·밭 주소</li>
+              <li><i data-lucide="x"></i>주민등록번호</li>
+              <li><i data-lucide="x"></i>결제·계좌 정보</li>
+            </ul>
+            <p class="trust__fine">이 페이지를 몇 분이 보셨는지 세는, 이름 없는 방문 기록은 따로 남겨요. 누구인지는 알 수 없어요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── 팀 ───────── -->
+    <section class="section" id="team">
+      <div class="container">
+        <div class="team reveal">
+          <span class="team__logo" aria-hidden="true"><i data-lucide="sprout"></i></span>
+          <div class="team__text">
+            <p class="kicker">만드는 사람들</p>
+            <h2>INSIDERS 린스타트업 팀</h2>
+            <!-- TODO: 팀 소개 문구·구성원은 실제 내용으로 바꿔 주세요. -->
+            <p>영농일지를 쓰시는 농가의 불편을 직접 듣고, 작게 만들어 확인해 보는 학생 팀이에요. 문의에 연락드리는 사람도 이 팀이에요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── 문의 폼 ───────── -->
+    <section class="section section--apply" id="apply">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="kicker">문의 남기기</p>
+          <h2>아래 두 가지만 적어 주세요</h2>
+          <p class="section__sub">남겨 주시면 저희가 먼저 연락드릴게요. 사진은 필요 없어요.</p>
+        </header>
+
+        <div class="form-card reveal">
+          <form id="inquiry" novalidate autocomplete="on">
+            <!-- 봇 방지용 (사람 눈에는 안 보임) -->
+            <div class="hp" aria-hidden="true">
+              <label>웹사이트 <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="contact">연락처 <span class="req">필수</span></label>
+              <div class="input">
+                <i data-lucide="phone"></i>
+                <input id="contact" name="contact" type="text" inputmode="text" autocomplete="tel"
+                       placeholder="전화번호 또는 카카오톡 ID" maxlength="40"
+                       aria-describedby="contact-hint contact-error" required>
+              </div>
+              <p class="field__hint" id="contact-hint">전화번호(010-0000-0000)나 카카오톡 ID, 편하신 쪽으로 적어 주세요.</p>
+              <p class="field__error" id="contact-error" role="alert"></p>
+            </div>
+
+            <fieldset class="field">
+              <legend class="field__label">지금 일지를 어떻게 쓰시나요? <span class="req">필수</span></legend>
+              <div class="choices" role="radiogroup" aria-describedby="journal-error">
+                <label class="choice">
+                  <input type="radio" name="journal" value="종이" required>
+                  <span class="choice__body"><i data-lucide="notebook-pen"></i><b>종이</b><small>공책·인쇄 양식</small></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="journal" value="엑셀">
+                  <span class="choice__body"><i data-lucide="file-spreadsheet"></i><b>엑셀</b><small>컴퓨터 파일</small></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="journal" value="앱">
+                  <span class="choice__body"><i data-lucide="smartphone"></i><b>앱</b><small>휴대폰 앱</small></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="journal" value="안 쓴다">
+                  <span class="choice__body"><i data-lucide="ban"></i><b>안 써요</b><small>따로 안 적어요</small></span>
+                </label>
+              </div>
+              <p class="field__error" id="journal-error" role="alert"></p>
+            </fieldset>
+
+            <div class="field">
+              <label class="consent">
+                <input type="checkbox" id="consent" name="consent">
+                <span class="consent__box" aria-hidden="true"><i data-lucide="check"></i></span>
+                <span class="consent__text">문의 답변을 위해 <b>연락처와 일지 쓰는 방식</b>을 받는 데 동의해요 <span class="req">필수</span></span>
+              </label>
+              <details class="consent__more">
+                <summary>자세히 보기 <i data-lucide="chevron-down"></i></summary>
+                <ul>
+                  <li><b>받는 정보</b> · 연락처, 일지 쓰는 방식</li>
+                  <li><b>쓰는 곳</b> · 문의에 연락드리고, 시범 서비스를 어떻게 만들지 정하는 데만 써요.</li>
+                  <li><b>받지 않는 정보</b> · 사진, 주소, 주민등록번호, 결제 정보</li>
+                  <li><b>삭제</b> · 연락 주시면 바로 지워요.</li>
+                  <li><b>방문 기록</b> · 이름 없이 방문 횟수만 세요.</li>
+                </ul>
+              </details>
+              <p class="field__error" id="consent-error" role="alert"></p>
+            </div>
+
+            <p class="form__error" id="form-error" role="alert" hidden></p>
+
+            <button class="btn btn--primary btn--lg btn--block" type="submit" id="submit-btn">
+              <span class="btn__label">문의 남기기 <i data-lucide="send"></i></span>
+              <span class="btn__loading" hidden><i data-lucide="loader-circle" class="spin"></i> 보내는 중…</span>
+            </button>
+
+            <p class="form__note"><i data-lucide="lock"></i> 개발 중인 시범 서비스예요. 보내셔도 결제나 가입은 없어요.</p>
+          </form>
+
+          <div class="success" id="success" hidden tabindex="-1">
+            <span class="success__icon"><i data-lucide="circle-check"></i></span>
+            <h3>문의가 접수됐어요</h3>
+            <p id="success-text">남겨 주신 연락처로 저희가 먼저 연락드릴게요.</p>
+            <p class="success__sub">사진은 지금 보내지 않으셔도 돼요. 연락드려서 이야기부터 나눠요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── FAQ ───────── -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="kicker">자주 묻는 질문</p>
+          <h2>궁금하신 점</h2>
+        </header>
+
+        <div class="faq reveal">
+          <details>
+            <summary>지금 바로 일지가 옮겨지나요? <i data-lucide="chevron-down"></i></summary>
+            <p>아직은 아니에요. 개발 중인 시범 서비스라서, 문의를 주시면 저희가 직접 연락드려 어떻게 진행할지 설명드려요.</p>
+          </details>
+          <details>
+            <summary>사진은 언제 보내나요? <i data-lucide="chevron-down"></i></summary>
+            <p>이 페이지에서는 받지 않아요. 연락드려서 이야기를 나눈 뒤, 보내주실 수 있는지 그 자리에서 여쭤볼게요.</p>
+          </details>
+          <details>
+            <summary>연락처는 어디에 쓰이나요? <i data-lucide="chevron-down"></i></summary>
+            <p>문의에 연락드리는 데만 써요. 광고나 다른 목적으로 쓰지 않고, 지워 달라고 하시면 바로 지워요.</p>
+          </details>
+          <details>
+            <summary>일지를 안 쓰는데도 문의해도 되나요? <i data-lucide="chevron-down"></i></summary>
+            <p>네, “안 써요”를 골라 남기셔도 돼요. 어떤 점이 불편해서 안 쓰시는지도 듣고 싶어요.</p>
+          </details>
+          <details>
+            <summary>연락은 어떻게 오나요? <i data-lucide="chevron-down"></i></summary>
+            <p>남겨 주신 전화번호로 전화나 문자, 또는 카카오톡 ID로 메시지를 드려요.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <span class="brand__mark brand__mark--sm" aria-hidden="true"><i data-lucide="sprout"></i></span>
+        <strong>영농일지 옮김</strong>
+      </div>
+      <p>개발 중인 시범 서비스입니다 · INSIDERS 린스타트업 팀</p>
+    </div>
+  </footer>
+
+  <!-- 모바일 하단 고정 버튼 -->
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <a class="btn btn--primary btn--lg btn--block" href="#apply" data-cta="sticky" tabindex="-1">
+      문의 남기기 <i data-lucide="arrow-right"></i>
+    </a>
+  </div>
+
+</body>
+</html>

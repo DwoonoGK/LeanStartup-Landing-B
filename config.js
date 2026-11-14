@@ -8,7 +8,7 @@ window.SITE_CONFIG = {
    * 설정 방법: README.md 의 "폼 연결" 참고.
    * 비워 두면 '데모 모드'로 동작합니다. 화면 위에 안내 띠가 뜨고, 문의는 어디에도 전송되지 않습니다.
    */
-  endpoint: "",
+  endpoint: "https://script.google.com/macros/s/AKfycbyxDVW8XEq6sNv5X4FhiyR7EicdWU9RUsCZdIhfZzT9dXzfe4HWeTpKmMWBRtqWZWcU/exec",
 
   /**
    * 접수 완료 화면에 나오는 연락 시점 문구.

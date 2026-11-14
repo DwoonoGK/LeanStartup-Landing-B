@@ -213,7 +213,7 @@
       setError($('input[name="journal"]'), jErr);
       if (jErr) firstBad = firstBad || $('input[name="journal"]');
 
-      var kErr = consentEl.checked ? "" : "동의해 주셔야 문의를 보낼 수 있어요.";
+      var kErr = consentEl.checked ? "" : "동의해 주셔야 신청할 수 있어요.";
       setError(consentEl, kErr);
       if (kErr) firstBad = firstBad || consentEl;
 

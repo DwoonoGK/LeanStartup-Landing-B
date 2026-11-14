@@ -31,6 +31,7 @@ function doPost(e) {
         d.ts, d.src, d.vid, d.contact, d.journal,
         "", "", "", "", d.ua
       ].map(safe_));
+      notify_(d); // 시트에 먼저 저장한 뒤 메일을 보낸다. 메일이 실패해도 신청은 남는다.
     } else if (["landing_view", "cta_click", "form_start"].indexOf(d.type) !== -1) {
       var ev = sheet_(ss, EVENTS_SHEET, EVENTS_HEADER);
       ev.appendRow([
@@ -49,6 +50,44 @@ function doPost(e) {
 
 function doGet() {
   return ContentService.createTextOutput("ok");
+}
+
+/**
+ * 새 신청이 오면 메일로 알린다.
+ * 받는 사람: 스크립트 속성 NOTIFY_EMAIL → 없으면 이 스크립트를 배포한 구글 계정.
+ * (공개 저장소에 메일 주소가 남지 않도록 코드에는 적지 않는다.)
+ */
+function notify_(d) {
+  try {
+    var to = PropertiesService.getScriptProperties().getProperty("NOTIFY_EMAIL") ||
+             Session.getEffectiveUser().getEmail();
+    if (!to) return;
+    var sheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl();
+    var body = [
+      "영농일지 옮김 — 새 무료 베타 신청이 도착했어요.",
+      "",
+      "연락처: " + String(d.contact || "").slice(0, 60),
+      "일지 쓰는 방식: " + String(d.journal || "").slice(0, 20),
+      "유입(src): " + String(d.src || "").slice(0, 40),
+      "접수 시각: " + String(d.ts || "").slice(0, 40),
+      "",
+      "신청 목록: " + sheetUrl,
+      "(연락을 시도했는지, 답했는지, 대화했는지는 시트의 '연락 시도·답변함·대화함' 칸에 O 로 표시해 두세요.)"
+    ].join("\n");
+    MailApp.sendEmail({
+      to: to,
+      subject: "[영농일지 옮김] 새 무료 베타 신청 · " + String(d.journal || ""),
+      body: body,
+      name: "영농일지 옮김 랜딩"
+    });
+  } catch (err) {
+    // 메일 한도 초과 등으로 실패해도 신청 저장에는 영향이 없다.
+  }
+}
+
+/** 메일이 잘 오는지 시험: 편집기에서 testMail 선택 후 ▶ 실행. */
+function testMail() {
+  notify_({ contact: "010-0000-0000 (시험)", journal: "시험", src: "test", ts: new Date().toISOString() });
 }
 
 /** 탭이 없으면 만들고, 머리글 행을 넣는다. */

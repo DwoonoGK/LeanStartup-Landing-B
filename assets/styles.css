@@ -381,6 +381,25 @@ h2 {
 .app-done strong { display: block; font-size: 1rem; font-weight: 800; color: var(--green-hover); line-height: 1.35; }
 .app-done span { font-size: 0.8125rem; color: var(--ink-2); line-height: 1.4; }
 
+.app-notice {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; margin-bottom: 20px;
+  border-radius: var(--r);
+  background: var(--amber-soft);
+  border: 1px solid #f1dfbf;
+}
+.app-notice__icon {
+  display: grid; place-items: center; flex: none;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--amber); color: var(--night);
+  animation: ring 3s ease-in-out infinite;
+  transform-origin: 50% 20%;
+}
+.app-notice__icon .lucide { width: 18px; height: 18px; }
+.app-notice strong { display: block; font-size: 1rem; font-weight: 800; color: var(--amber-ink); line-height: 1.35; }
+.app-notice span { font-size: 0.8125rem; color: var(--ink-2); line-height: 1.4; }
+@keyframes ring { 0%, 70%, 100% { transform: rotate(0); } 75% { transform: rotate(-14deg); } 82% { transform: rotate(12deg); } 90% { transform: rotate(-8deg); } }
+
 .app-label { margin-bottom: 4px; font-size: 0.8125rem; font-weight: 700; color: var(--ink-3); }
 .app-list li {
   display: grid;
@@ -432,6 +451,39 @@ h2 {
 .float--c { top: 8px; right: 8px; background: var(--amber-soft); border-color: #f1dfbf; color: var(--amber-ink); animation-delay: -3.2s; }
 .float--c .lucide { color: var(--amber-ink); }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+/* 데이터 활용 카드 */
+.card { position: relative; }
+.soon {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--amber-soft);
+  color: var(--amber-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.soon .lucide { width: 12px; height: 12px; }
+.why__note {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  max-width: 620px;
+  margin: 36px auto 0;
+  font-size: 0.9688rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  text-align: left;
+}
+.why__note .lucide { margin-top: 4px; color: var(--green); }
+.why__note b { color: var(--ink); }
 
 /* 베타 무료 */
 .beta {
@@ -900,6 +952,7 @@ h2 {
   body { font-size: 1.125rem; }
   .sticky-cta { display: none; }
   .cards--3 { grid-template-columns: repeat(3, 1fr); }
+  .cards--2 { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(3, 1fr); }
   .trust__cards { grid-template-columns: 1fr 1fr; }
 }
